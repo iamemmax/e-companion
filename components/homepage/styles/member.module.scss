@@ -11,9 +11,10 @@
     @include phone {
         margin-top: 2rem;
     }
-
+    
     .member__header {
         text-align: center;
+     
 
         h3 {
             color: $main;
@@ -58,7 +59,6 @@
         }
     }
         & .memberInfo {
-    
             color: #fff;
             width: 90%;
             margin: 0px auto;
@@ -97,10 +97,10 @@
              -moz-transition:transform .5s ease-in-out;
              -ms-transition:transform .5s ease-in-out;
              -o-transition:transform .5s ease-in-out;
-             -webkit-transform: translateY(-140%);
-             -moz-transform: translateY(-140%);
-             -ms-transform: translateY(-140%);
-             -o-transform: translateY(-140%);
+             -webkit-transform: translateY(-120%);
+             -moz-transform: translateY(-120%);
+             -ms-transform: translateY(-120%);
+             -o-transform: translateY(-120%);
 }
     }
 
@@ -143,7 +143,7 @@
         
         // flex-direction: column;
         .love__box{
-            border: 0.5px solid #999;
+            // border: 1px solid red;
             height: 370px;
             width: 250px;
             margin: 5px;
@@ -170,13 +170,14 @@
             align-self: start;
             display: block;
             h2{
-                font-size: 20px;
+                font-size: 14px;
+            
             }
             p{
-                font-size: 16px;
+                font-size: 12px;
             }
             span{
-                font-size: 14px;
+                font-size: 12px;
             }
         }
     }
