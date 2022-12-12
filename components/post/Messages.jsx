@@ -165,6 +165,7 @@ const Messages = ({ post }) => {
               <Waypoint
                 onEnter={handleEnterViewport}
                 onLeave={handleExitViewport}
+                key={x?._video_id}
               >
                 <video
                   src={x?.video}
@@ -406,6 +407,7 @@ const Messages = ({ post }) => {
               <Waypoint
                 onEnter={handleEnterViewport}
                 onLeave={handleExitViewport}
+                key={x?._video_id}
               >
                 <video
                   src={x?.video}
@@ -645,6 +647,7 @@ const Messages = ({ post }) => {
               <Waypoint
                 onEnter={handleEnterViewport}
                 onLeave={handleExitViewport}
+                key={x?._video_id}
               >
                 <video
                   src={x?.video}
