@@ -67,9 +67,6 @@ const ActivityBody = () => {
     }
   };
 
-  if (isLoading) {
-    return <Loading />;
-  }
   let [shouldPlay, updatePlayState] = useState(false);
 
   let handleEnterViewport = function () {
@@ -79,6 +76,9 @@ const ActivityBody = () => {
     updatePlayState(false);
   };
 
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div>
       <Grid container p={0}>
