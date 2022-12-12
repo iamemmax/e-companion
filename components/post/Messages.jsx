@@ -562,8 +562,6 @@ const Messages = ({ post }) => {
         </Menu>
       </div>
     );
-  } else {
-    return null;
   }
 
   if (post?.visibility === "for me" && post?.author?._id === currentUser) {
