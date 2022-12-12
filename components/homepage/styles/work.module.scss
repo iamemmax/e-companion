@@ -1,0 +1,98 @@
+@import "../../../public//styles/variable/color.scss";
+@import "../../../public//styles/mixing/media.scss";
+
+.work_wrapper {
+  width: 90%;
+  margin: 0px auto;
+  background-color: #f3f3f3;
+  padding: 0 20px;
+  overflow-x: hidden;
+
+  .work__header {
+    text-align: center;
+
+    h3 {
+      color: $main;
+      font-size: 1.5rem;
+      font-family: "Poppins", sans-serif;
+      margin-bottom: 0;
+      padding: 10px;
+
+      @include phone {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .container {
+    background-color: #fff;
+    height: 20rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    @include phone {
+      flex-direction: column;
+      height: auto;
+    }
+  }
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  justify-content: center;
+  padding-left: 5rem;
+
+  a {
+    color: $secondary;
+    line-height: 50px;
+    text-align: left;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    i {
+      font-size: 1.5rem;
+      padding-right: 2rem;
+    }
+  }
+}
+
+.rightWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > div {
+    width: 50%;
+    margin: 5px;
+  }
+
+  .text {
+    h3 {
+      color: $secondary;
+      font-family: "Roboto", sans-serif;
+      font-size: 1.5em;
+    }
+
+    p {
+      font-family: "Poppins", sans-serif;
+      font-size: 0.8em;
+      margin-top: -10px;
+      line-height: 25px;
+    }
+    @include phone {
+      width: 100% !important;
+      padding: 10px;
+    }
+  }
+
+  @include phone {
+    .imgbox {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+@import "../../../public/styles/variable/color.scss";
+@import "../../../public/styles/mixing/media.scss";
+.wrapper {
+  height: calc(100vh - 6rem);
+  width: 80%;
+  margin: 0px auto;
+  display: grid;
+  grid-template-columns: 1fr 15rem;
+  column-gap: 2rem;
+  margin-top: 5rem;
+
+  .profileLeft {
+    box-shadow: 0px 1px 2px 2px #eee;
+    border-radius: 10px;
+    order: 2;
+    overflow: auto;
+    nav {
+      ul {
+        a {
+          display: flex;
+          flex-direction: column;
+          line-height: 4rem;
+          width: 100%;
+          font-size: 0.8rem;
+          justify-content: flex-start;
+          align-items: flex-start;
+          font-family: "Poppins", sans-serif;
+          transition: color 0.5s ease-in-out;
+
+          &:hover {
+            color: $primary;
+            transition: color 0.5s ease-in-out;
+          }
+        }
+      }
+    }
+    @include phone {
+      display: none;
+    }
+  }
+  .profileRight {
+    padding: 10px;
+    border-radius: 5px;
+    order: 1;
+
+    overflow: auto;
+    @include phone {
+      grid-column: 1/-1;
+    }
+  }
+}

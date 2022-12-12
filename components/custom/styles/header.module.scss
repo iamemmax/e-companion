@@ -1,0 +1,154 @@
+@import "../../../public/styles/variable/color.scss";
+@import "../../../public/styles/mixing/media.scss";
+
+.header {
+  height: 3.5rem;
+  background-color: darken($primary, 10%);
+  width: 100%;
+  position: relative;
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0px auto;
+    align-items: center;
+    height: 100%;
+    position: relative;
+
+    .logo {
+      a {
+        font-family: "Roboto", sans-serif;
+        font-size: 1.5em;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $light;
+
+        @include phone {
+          font-size: 0.85em;
+        }
+      }
+    }
+
+    .navigation {
+
+      ul {
+        display: flex;
+        li{
+          list-style: none;
+
+          &.active{
+            color: blue;
+          }
+        }
+        @include phone {
+          position: fixed;
+          display: block;
+          top: 2.5rem;
+          bottom: 0;
+          left: 0;
+          width: 50%;
+          height: 90vh;
+          background-color: $secondary;
+          transform: translateX(-200%);
+          transition: transform 0.5s ease-in-out;
+          z-index: 99999;
+        }
+
+        a {
+          margin: 1.7em;
+          font-size: 0.8em;
+          color: $light;
+          font-family: "Roboto", sans-serif;
+          font-weight: 700;
+          transition: 0.5s ease-in-out;
+          text-transform: uppercase;
+
+          &:hover,.active {
+            color: $secondary;
+            transition: 0.5s ease-in-out;
+          }
+
+          @include phone {
+            display: block;
+            line-height: 50px;
+
+            &:hover {
+              color: $primary;
+            }
+          }
+        }
+      }
+    }
+
+    .active{
+      color: $secondary !important;
+    }
+
+    .rightMenu {
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+
+      ul {
+        background-color: $secondary;
+        padding: 10px 15px;
+        border-radius: 5px;
+
+        a {
+          transition: all 0.15s ease;
+          font-weight: 600;
+          font-family: "Roboto", sans-serif;
+          font-size: 0.95em;
+          text-transform: uppercase;
+          color: $light;
+
+          &:hover {
+            font-weight: 700;
+            color: $secondary;
+          }
+
+          @include phone {
+            padding: 8px 10px;
+            font-size: 0.75em;
+          }
+        }
+
+        &:hover {
+          background-color: $light;
+          transition: all 0.15s ease-in-out;
+          font-weight: 700;
+          color: $secondary;
+        }
+      }
+    }
+
+    .menu {
+      display: none;
+
+      @include phone {
+        display: block;
+
+        button {
+          background-color: unset;
+          border: none;
+          cursor: pointer;
+
+          .barIcon {
+            color: $light;
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+
+  .showMenu {
+    @extend .navigation;
+
+    ul {
+      transform: translateX(-12%) !important;
+      transition: transform 0.5s ease-in-out;
+    }
+  }
+}

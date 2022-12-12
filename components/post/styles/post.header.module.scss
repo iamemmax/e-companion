@@ -1,0 +1,29 @@
+@import "../../../public/styles//variable/color.scss";
+@import "../../../public/styles//mixing/media.scss";
+
+.search__bar {
+
+    border-radius: 50%;
+
+}
+
+.header__container {
+    border: 1px solid $primary;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+}
+
+.postModal{
+    background-color: #fff;
+    width: 35rem;
+    margin: 0px auto;
+    max-width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include phone{
+        width: 20rem !important;
+        
+    }
+}

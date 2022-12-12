@@ -1,0 +1,49 @@
+@import "../../../public//styles//mixing/media.scss";
+
+.authWrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    &>div {
+        height: 100%;
+        width: 50%;
+    }
+
+    .formField {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        flex-direction: column;
+
+
+    }
+
+    .banner {
+        background-image: url("https://images.unsplash.com/photo-1550060237-db30899a0745?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGRhdGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+
+        &::after {
+            position: absolute;
+            display: block;
+            content: "";
+            top: 0;
+            height: 100vh;
+            left: 0;
+            background-color: #000;
+            width: 100%;
+            opacity: .4;
+        }
+
+        @include phone {
+            display: none
+        }
+
+    }
+}

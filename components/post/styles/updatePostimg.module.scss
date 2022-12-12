@@ -1,0 +1,25 @@
+@import "../../../public/styles//variable/color.scss";
+.img_wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  width: 200px;
+  & > img {
+    width: 10rem;
+    height: 10rem;
+    // margin: 10px;
+  }
+
+  .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: $light;
+    background-color: $secondary;
+
+    &:hover {
+      background-color: $primary;
+    }
+  }
+}

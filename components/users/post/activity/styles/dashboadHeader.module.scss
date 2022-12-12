@@ -1,0 +1,140 @@
+// @import "../../../../public/styles/mixing/media.scss";
+// @import "../../../../public/styles/variable/color.scss";
+// .wrapper {
+//   height: 8rem;
+//   width: 100%;
+//   max-width: 100%;
+//   background-image: url("https://plus.unsplash.com/premium_photo-1661475984104-489f85e9c94f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGRhdGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60");
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   background-size: cover;
+//   position: relative;
+//   margin-bottom: 4.5rem;
+
+//   &::after {
+//     inset: 0;
+//     position: absolute;
+//     content: "";
+//     width: 100%;
+//     height: 100%;
+//     // display: block;
+//     background-color: black;
+//     opacity: 0.7;
+//     z-index: 90 !important;
+//   }
+
+//   .middleWrapper {
+//     display: flex;
+//     align-items: center;
+//     margin: 0px auto;
+//     width: 90%;
+
+//     // border: 2px solid red;
+//     height: 100%;
+//     color: #fff;
+//     opacity: 1;
+
+//     .profileImg {
+//       margin-right: 10px;
+//       width: 6rem;
+//       height: 6rem;
+//       border-radius: 100%;
+//       z-index: 9999;
+//       border: 5px solid $light;
+//       align-self: center;
+//       overflow: hidden;
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+
+//       img {
+//         width: 100%;
+//         height: 100%;
+//       }
+//     }
+
+//     .details {
+//       z-index: 9999;
+//       flex: 3;
+//       height: 100%;
+//       display: flex;
+//       justify-content: flex-start;
+//       align-items: flex-start;
+//       flex-direction: column;
+//       position: relative;
+
+//       & > div {
+//         width: 100%;
+//         position: relative;
+//       }
+//       .userInfo {
+//         padding: 2rem;
+//         align-self: flex-start;
+//         overflow: hidden;
+//         // height: 4.5rem;
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         flex-direction: column;
+
+//         h2 {
+//           font-size: 2.4em;
+//           text-transform: capitalize;
+//           margin-bottom: 0;
+//           display: block;
+//           padding: 0.1em;
+//           font-family: "Roboto", sans-serif;
+//         }
+//         span {
+//           display: block;
+//           font-size: 0.7rem;
+//           padding: 0.2rem;
+//           margin-bottom: 2rem;
+//         }
+//       }
+//     }
+//   }
+//   .links {
+//     // justify-self: end;
+
+//     height: 3.5rem;
+//     z-index: 999;
+
+//     background-color: lighten($primary, 5%);
+//     nav {
+//       ul {
+//         width: 90%;
+//         margin: 0px auto;
+//         height: 100%;
+//         display: flex;
+//         align-items: center;
+//         justify-content: flex-start;
+//         a {
+//           font-family: "Poppins", sans-serif;
+//           font-size: 14px;
+//           margin: 20px;
+//           color: $light;
+//           font-weight: 400;
+//           text-transform: capitalize;
+//           transition: color 0.5s ease-in-out;
+
+//           &:hover {
+//             color: $dark;
+//             transition: color 0.5s ease-in-out;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .addFriends {
+//   overflow: hidden;
+//   padding: 10px;
+// }
+// .friendBox {
+//   width: 90%;
+//   margin: 0px auto;
+//   width: 100%;
+//   display: flex;
+// }

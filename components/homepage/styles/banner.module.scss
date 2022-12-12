@@ -1,0 +1,105 @@
+@import "../../../public//styles/variable/color.scss";
+@import "../../../public//styles/mixing/media.scss";
+
+.wrapper {
+  width: 90%;
+  margin: 0px auto;
+  height: calc(100vh - 3.5rem);
+  // padding: 2rem 0;
+display: flex;
+  // align-items: center;
+  justify-content: center;
+  .textBox {
+    // border: 2px solid blue;
+    // height: calc(100vh - 3.5rem);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 2rem;
+
+    .textTitle {
+      width: 100%;
+
+      h2 {
+        font-size: 3.1rem;
+        color: $secondary;
+        width: 100%;
+        text-transform: uppercase;
+        font-weight: 800;
+        font-family: "Lato", sans-serif;
+
+        @include phone {
+          font-size: 2rem;
+          border: 2p solid blue;
+          text-align: center;
+        }
+      }
+    }
+
+    .bannertDesc {
+      // border: 2px solid red;
+      width: 100%;
+      margin-top: -3.5em;
+
+      @include phone {
+        margin-top: -2em;
+      }
+
+      p {
+        font-size: 1.2rem;
+        width: 80%;
+        max-width: 100%;
+        // font-family: 'Lato', sans-serif;
+        font-family: "Poppins", sans-serif;
+        color: lighten($dark, 10%);
+        line-height: 30px;
+
+        @include phone {
+          font-size: 1rem;
+          text-align: center;
+          width: 100%;
+          line-height: 25px;
+        }
+      }
+    }
+
+    .form {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      padding: 10px;
+        margin-bottom: 2rem;
+     
+    }
+  }
+
+  .bannerRight {
+    height: calc(100vh - 5rem);
+    background-image: url("../../../public//assets//img/banner1.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // background-blend-mode: color;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: $light;
+      opacity: 0.1;
+    }
+
+    @include phone {
+      display: none;
+    }
+  }
+
+  @include phone {
+    height: auto;
+  }
+}

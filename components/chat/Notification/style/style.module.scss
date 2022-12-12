@@ -1,0 +1,17 @@
+.Notification_wrapper{
+    position: absolute;
+    width: 700px;
+    top: 50%;
+    border: 2px solid red;
+    height: 400px;
+    max-width: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    background-color: #eee;
+    z-index: 9999;
+    display: none;
+}
