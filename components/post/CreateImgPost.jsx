@@ -143,8 +143,7 @@ function CreateImgPost({ handleClose, setOpen }) {
   } = formik;
 
   useEffect(() => {
-    console.log(arrivalMessage);
-    dispatch(getPostFromSocket(arrivalMessage));
+    dispatch(CreateNewPost(arrivalMessage));
   }, [arrivalMessage]);
   return (
     <div>

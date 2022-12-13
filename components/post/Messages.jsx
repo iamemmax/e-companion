@@ -50,6 +50,7 @@ const Messages = ({ post }) => {
   const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
   // const { user, data } = useSelector(state => state.auth)
   const [anchorEl, setAnchorEl] = useState(null);
+
   const dispatch = useDispatch();
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -126,11 +127,14 @@ const Messages = ({ post }) => {
               </List>
             </div>
           </Grid>
-          <Grid item xs={3} sm={1.5} justifyContent="" alignItems="ri">
-            <IconButton onClick={handleClick}>
-              <MoreHorizOutlinedIcon />
-            </IconButton>
-          </Grid>
+
+          {post?.author?._id === user?.data?.user?._id && (
+            <Grid item xs={3} sm={1.5} justifyContent="" alignItems="ri">
+              <IconButton onClick={handleClick}>
+                <MoreHorizOutlinedIcon />
+              </IconButton>
+            </Grid>
+          )}
         </Grid>
         <Link href={`/post/${post?._id}`}>
           <div

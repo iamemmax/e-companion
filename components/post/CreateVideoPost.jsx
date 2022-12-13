@@ -55,11 +55,15 @@ function CreateVideoPost({ handleClose, setOpen }) {
 
   const [loading, setLoading] = useState(false);
   const socket = useRef();
+  const [arrivalMessage, setArrivalMessage] = useState(null);
   useEffect(() => {
     socket.current = io("https://e-companion.onrender.com");
     socket.current.emit("setup", user?.data?.user);
+    socket.current.on("getPosts", (data) => {
+      if (data?.author === user?.data?.user?._id) return;
+      setArrivalMessage(data);
+    });
   }, []);
-  //upload img
 
   const handleSubmitImg = (e) => {
     setVideo(e.target.files[0]);
@@ -117,6 +121,10 @@ function CreateVideoPost({ handleClose, setOpen }) {
     touched,
   } = formik;
 
+  useEffect(() => {
+    console.log(arrivalMessage);
+    dispatch(getPostFromSocket(arrivalMessage));
+  }, [arrivalMessage]);
   return (
     <div>
       <Box>
