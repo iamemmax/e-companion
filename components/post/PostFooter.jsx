@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Grid, IconButton, Badge, Divider, Typography } from "@mui/material";
 import ThumbDownOffAltOutlinedIcon from "@mui/icons-material/ThumbDownOffAltOutlined";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
@@ -14,6 +14,7 @@ import Styles from "./styles/post.footer.module.scss";
 import axios from "axios";
 import baseUrl from "../config/Axios";
 import { likePosts } from "../../features/slice/post/postSlice";
+import { io } from "socket.io-client";
 
 function PostFooter({ post }) {
   const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -24,7 +25,7 @@ function PostFooter({ post }) {
       padding: "0 4px",
     },
   }));
-
+  const socket = useRef();
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -33,6 +34,16 @@ function PostFooter({ post }) {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const currentuser = user.data?.user?._id;
+  const [arrivalMessage, setArrivalMessage] = useState(null);
+
+  useEffect(() => {
+    socket.current = io("https://e-companion.onrender.com");
+    socket.current.emit("setup", user?.data?.user);
+    socket.current.on("getLikes", (data) => {
+      if (data?.author === user?.data?.user?._id) return;
+      setArrivalMessage(data);
+    });
+  }, []);
   const likePost = async (id) => {
     try {
       const { data } = await axios.put(
@@ -44,12 +55,18 @@ function PostFooter({ post }) {
         id,
         data: data?.data?.likes,
       };
-
+      socket.current.emit("addLikePost", info);
       dispatch(likePosts(info));
     } catch (error) {
       console.log(error.message);
     }
   };
+  useEffect(() => {
+    const { id, data } = arrivalMessage;
+    // let info = { id, data };
+    console.log(data);
+    // dispatch(likePosts(info));
+  }, [arrivalMessage]);
 
   return (
     <div>
