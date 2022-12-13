@@ -51,6 +51,7 @@ function CreateImgPost({ handleClose, setOpen }) {
   const { isLoading, isSucess, isError } = useSelector((state) => state.posts);
   const { user } = useSelector((state) => state.auth);
   const [imgPreview, setImgPreview] = useState(null);
+  const [arrivalMessage, setArrivalMessage] = useState(null);
 
   const [loading, setLoading] = useState(false);
   const [doReload, setDoReload] = useState(false);
@@ -61,6 +62,13 @@ function CreateImgPost({ handleClose, setOpen }) {
   useEffect(() => {
     socket.current = io("https://e-companion.onrender.com");
     socket.current.emit("setup", user?.data?.user);
+    socket.current.on("getPosts", (data) => {
+      if (data?.author === user?.data?.user?._id) return;
+      setArrivalMessage(data);
+    });
+  }, []);
+
+  useEffect(() => {
     let images = [];
     for (let i = 0; i < img.length; i++) {
       const file = img[i];
@@ -115,7 +123,9 @@ function CreateImgPost({ handleClose, setOpen }) {
           dispatch(CreateNewPost(data?.data));
           socket.current.emit("createNewPost", data?.data);
           console.log(data?.data);
+          setDoReload(true);
           setLoading(false);
+          // setOpen(false);
         }
       } catch (error) {
         setLoading(false);
@@ -133,11 +143,9 @@ function CreateImgPost({ handleClose, setOpen }) {
   } = formik;
 
   useEffect(() => {
-    socket.current.on("getPosts", (data) => {
-      if (data?.author?._id === user?.data?.user?._id) return;
-      dispatch(getPostFromSocket(data));
-    });
-  }, [doReload]);
+    console.log(arrivalMessage);
+    dispatch(getPostFromSocket(arrivalMessage));
+  }, [arrivalMessage]);
   return (
     <div>
       <Box>

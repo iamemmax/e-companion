@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import baseUrl from "../../../components/config/Axios";
 
-// export const CreateNewPost = createAsyncThunk(
+
 //   "post/new",
 //   async (data, thunkAPI) => {
 //     const { description, visibility, video, img , myId} = data;
@@ -73,7 +73,7 @@ export const fetchPosts = createAsyncThunk(
   "post/fetch",
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get(`${baseUrl}/posts`);
+      const { data } = await axios.get(`${baseUrl}/posts?limit=50`);
       // .catch((err) => console.log(err.message));
       return data.data;
     } catch (error) {
