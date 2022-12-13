@@ -61,7 +61,7 @@
         & .memberInfo {
             color: #fff;
             width: 90%;
-            margin: 0px auto;
+            margin: 80px auto;
             padding:10px;
             text-align:center;
             background: lighten(#999, 10%);
@@ -75,11 +75,20 @@
             h2 {
                 line-height: 20px;
                 display: block;
+                font-size: 14px;
+                color: $secondary;
             }
     
             p {
+                margin-top: -15px;
+                display: block;
+                font-size: 14px;
+    
+            }
+            span {
                 margin-top: -10px;
                 display: block;
+                color:$primary;
     
             }
         }
@@ -91,16 +100,16 @@
         
      
         &:hover ~.memberInfo{
-             transform: translateY(-140%);
+             transform: translateY(-200%);
              transition:transform .5s ease-in-out;
              -webkit-transition:transform .5s ease-in-out;
              -moz-transition:transform .5s ease-in-out;
              -ms-transition:transform .5s ease-in-out;
              -o-transition:transform .5s ease-in-out;
-             -webkit-transform: translateY(-120%);
-             -moz-transform: translateY(-120%);
-             -ms-transform: translateY(-120%);
-             -o-transform: translateY(-120%);
+             -webkit-transform: translateY(-200%);
+             -moz-transform: translateY(-200%);
+             -ms-transform: translateY(-200%);
+             -o-transform: translateY(-200%);
 }
     }
 

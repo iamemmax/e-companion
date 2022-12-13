@@ -24,7 +24,7 @@ import { toast } from "react-toastify";
 import baseUrl from "../../components/config/Axios";
 import Loading from "../../components/config/Loader";
 import DashboardLayout from "../../components/layouts/DashboardLayout";
-
+import baseUrlUpload from "../../components/config/AxiosUpload";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -64,7 +64,7 @@ const Profile = () => {
 
     try {
       const { data } = await axios.put(
-        `${baseUrl}/users/update/profile-img`,
+        `${baseUrlUpload}/users/update/profile-img/${users?._id}`,
         formData
       );
       dispatch(uploadProfilePix(data.data.avater));
@@ -110,10 +110,10 @@ const Profile = () => {
             component="label"
             disableRipple
             disableFocusRipple
-            sx={{ position: "absolute", bottom: 0 }}
+            sx={{ position: "absolute", bottom: 0 , right:"1rem"}}
           >
             <input hidden accept="image/*" type="file" onChange={handleImg} />
-            <CameraAltOutlinedIcon />
+            {/* <CameraAltOutlinedIcon /> */}
             <Avatar
               alt="Remy Sharp"
               src={users?.avater?.filename}
@@ -125,7 +125,7 @@ const Profile = () => {
             component="label"
             disableRipple
             disableFocusRipple
-            sx={{ position: "absolute", bottom: -50, right: -40 }}
+            sx={{ position: "absolute", bottom: -50, right: 10 }}
           >
             {img !== null && (
               <Button type="submit" variant="outlined">
@@ -135,9 +135,9 @@ const Profile = () => {
           </IconButton>
         </form>
       </div>
-
-      <form onSubmit={handleSubmit} noValidate>
-        <Grid container spacing={5} p={5}>
+<br/>
+      <form onSubmit={handleSubmit} noValidate style={{marginTop:"20px"}} >
+        <Grid container spacing={5} p={5} >
           <Grid item xs={12} md={6}>
             <TextField
               label="firstname"

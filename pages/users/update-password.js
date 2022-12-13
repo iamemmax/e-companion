@@ -16,9 +16,15 @@ import { toast } from "react-toastify";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Loading from "../../components/config/Loader";
-
+import { useDispatch, useSelector } from "react-redux";
 const UpdatePassword = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const { 
+    isSuccess, user, message, isError
+} = useSelector(
+    (state) => state.auth
+  );
+  const users = user?.data?.user;
   const formik = useFormik({
     initialValues: {
       oldpassword: "",
@@ -30,7 +36,7 @@ const UpdatePassword = () => {
       console.log(password, password2, oldpassword);
       try {
         setIsLoading(true);
-        const { data } = await axios.put(`${baseUrl}/users/change-password`, {
+        const { data } = await axios.put(`${baseUrl}/users/change-password/${users?._id}`, {
           oldpassword,
           password,
           password2,
