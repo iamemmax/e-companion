@@ -25,6 +25,7 @@ import baseUrl from "../../components/config/Axios";
 import Loading from "../../components/config/Loader";
 import DashboardLayout from "../../components/layouts/DashboardLayout";
 import baseUrlUpload from "../../components/config/AxiosUpload";
+import { LoadingButton } from '@mui/lab';
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const Profile = () => {
   const users = user?.data?.user;
 
   const [img, setImg] = useState(null);
+  const [loading, setLoading] = useState(false);
   const handleImg = (e) => {
     setImg(e.target.files[0]);
   };
@@ -62,15 +64,18 @@ const Profile = () => {
     const formData = new FormData();
     formData.append("avater", img);
 
+    setLoading(true)
     try {
       const { data } = await axios.put(
         `${baseUrlUpload}/users/update/profile-img/${users?._id}`,
         formData
       );
       dispatch(uploadProfilePix(data.data.avater));
+      setLoading(false)
       setImg(null);
       console.log(data.data.avater);
     } catch (error) {
+      setLoading(false)
       console.log(error.message);
     }
   };
@@ -113,10 +118,10 @@ const Profile = () => {
             sx={{ position: "absolute", bottom: 0 , right:"1rem"}}
           >
             <input hidden accept="image/*" type="file" onChange={handleImg} />
-            {/* <CameraAltOutlinedIcon /> */}
+          <CameraAltOutlinedIcon style={{position:"absolute", right:1, bottom:"10px"}}/>
             <Avatar
               alt="Remy Sharp"
-              src={users?.avater?.filename}
+              src={img ? URL.createObjectURL(img) : users?.avater?.filename}
               sx={{ width: 100, height: 100 }}
             />
           </IconButton>
@@ -128,9 +133,18 @@ const Profile = () => {
             sx={{ position: "absolute", bottom: -50, right: 10 }}
           >
             {img !== null && (
-              <Button type="submit" variant="outlined">
-                upload
-              </Button>
+                  <LoadingButton
+          size="medium"
+         
+          loading={loading}
+          loadingPosition="end"
+            variant="contained"
+            fullWidth
+                type="submit"
+             
+        >
+          upload
+        </LoadingButton>
             )}
           </IconButton>
         </form>
@@ -269,3 +283,19 @@ const Style = {
   },
 };
 export default Profile;
+//   <form method="post" onSubmit={uploadImg} encType="multipart/form-data">
+          // <IconButton
+          //   aria-label="upload picture"
+          //   component="label"
+          //   disableRipple
+          //   disableFocusRipple
+          //   sx={{ position: "absolute", bottom: 0 , right:"1rem"}}
+          // >
+          //   <input hidden accept="image/*" type="file" onChange={handleImg} />
+          //   <CameraAltOutlinedIcon style={{position:"absolute", right:0, bottom:0}}/>
+          //   <Avatar
+          //     alt="Remy Sharp"
+          //     src={img ? URL.createObjectURL(img) : users?.avater?.filename}
+          //     sx={{ width: 100, height: 100 }}
+          //   />
+          // </IconButton>
