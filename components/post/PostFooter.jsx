@@ -62,9 +62,6 @@ function PostFooter({ post }) {
     }
   };
   useEffect(() => {
-    const { id, data } = arrivalMessage;
-    // let info = { id, data };
-    console.log(data);
     // dispatch(likePosts(info));
   }, [arrivalMessage]);
 

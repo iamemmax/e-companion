@@ -82,7 +82,7 @@ function Members() {
                   <div className={Styles.memberInfo}>
                     <h2>{item?.username}</h2>
                     <p>{item?.city}</p>
-                    <span>{item?.age}</span>
+                    <span>{item?.age} years</span>
                   </div>
                 </Grid>
               ))}
