@@ -76,7 +76,7 @@ function Header() {
                 <li  onClick={() => setActive(2)}
                 className={active === 2 ? Styles.active : ""}>
                 
-            <Link href="/" >
+            <Link href="/users/find-love" >
              Find love
             </Link>
               </li>
@@ -84,7 +84,7 @@ function Header() {
                 className={active === 3 ? Styles.active : ""}>
                 
             <Link href="/" >
-             Help
+             {/* Help */}
             </Link>
               </li>
               
