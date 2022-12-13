@@ -197,7 +197,7 @@ export const postSlice = createSlice({
       state.posts.push(action.payload)
     },
     getPostFromSocket: (state, action) => {
-      state.posts.push(action.payload)
+      state.posts = [ action.payload, ...state.posts,]
     },
   searchInput: (state, action) => {
       state.search = action.payload
