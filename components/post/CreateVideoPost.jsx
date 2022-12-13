@@ -99,6 +99,7 @@ function CreateVideoPost({ handleClose, setOpen }) {
           setDoReload(true);
           socket.current.emit("createNewPost", data?.data);
           setLoading(false);
+          setOpen(false);
         }
       } catch (error) {
         setLoading(false);

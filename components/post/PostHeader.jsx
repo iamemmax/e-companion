@@ -137,10 +137,13 @@ function PostHeader() {
                   </TabList>
                 </Box>
                 <TabPanel value="1" setOpen={setOpen}>
-                  <CreateImgPost />
+                  <CreateImgPost handleClose={handleClose} setOpen={setOpen} />
                 </TabPanel>
                 <TabPanel value="2">
-                  <CreateVideoPost />
+                  <CreateVideoPost
+                    handleClose={handleClose}
+                    setOpen={setOpen}
+                  />
                 </TabPanel>
               </TabContext>
             </Box>

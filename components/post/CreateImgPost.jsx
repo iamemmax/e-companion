@@ -125,7 +125,7 @@ function CreateImgPost({ handleClose, setOpen }) {
           console.log(data?.data);
           setDoReload(true);
           setLoading(false);
-          // setOpen(false);
+          setOpen(false);
         }
       } catch (error) {
         setLoading(false);
