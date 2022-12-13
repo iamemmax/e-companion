@@ -68,48 +68,55 @@ const FollowerProfileContainer = () => {
     setValue(newValue);
   };
   return (
-    <FollowersProfileLayout>
-      <Box sx={{ width: "100%", typography: "body1", align: "center" }}>
-        <TabContext value={value}>
-          <Box
-            sx={{
-              borderBottom: 1,
-              borderColor: "divider",
-              // padding: "10px",
-              textAlign: "center",
-            }}
-            align="center"
+    // <FollowersProfileLayout>
+    <Box
+      sx={{
+        width: "100%",
+        typography: "body1",
+        align: "center",
+        // border: "2px solid red",
+      }}
+    >
+      <TabContext value={value}>
+        <Box
+          sx={{
+            borderBottom: 1,
+            borderColor: "divider",
+            // padding: "10px",
+            textAlign: "center",
+          }}
+          align="center"
+        >
+          <TabList
+            onChange={handleChange}
+            aria-label="lab API tabs example"
+            label="item"
           >
-            <TabList
-              onChange={handleChange}
-              aria-label="lab API tabs example"
-              label="item"
-            >
-              <Tab label="Profile" value="1" />
-              <Tab label="Post" value="2" />
-              <Tab label="Photos" value="3" />
-              <Tab label="Followers" value="4" />
-              <Tab label="Following" value="5" />
-            </TabList>
-          </Box>
-          <TabPanel value="1">
-            <Profile user={user} loading={loading} />
-          </TabPanel>
-          <TabPanel value="2">
-            <FollowersPost followerPost={followerPost} loading={loading} />
-          </TabPanel>
-          <TabPanel value="3">
-            <FollowerPhotos followerPost={followerPost} loading={loading} />
-          </TabPanel>
-          <TabPanel value="4">
-            <Followers loading={loading} friends={user} />
-          </TabPanel>
-          <TabPanel value="5">
-            <Following loading={loading} friends={user} />
-          </TabPanel>
-        </TabContext>
-      </Box>
-    </FollowersProfileLayout>
+            <Tab label="Profile" value="2" />
+            <Tab label="Post" value="1" />
+            <Tab label="Photos" value="3" />
+            <Tab label="Followers" value="4" />
+            <Tab label="Following" value="5" />
+          </TabList>
+        </Box>
+        <TabPanel value="2">
+          <Profile user={user} loading={loading} />
+        </TabPanel>
+        <TabPanel value="1">
+          <FollowersPost followerPost={followerPost} loading={loading} />
+        </TabPanel>
+        <TabPanel value="3">
+          <FollowerPhotos followerPost={followerPost} loading={loading} />
+        </TabPanel>
+        <TabPanel value="4">
+          <Followers loading={loading} friends={user} />
+        </TabPanel>
+        <TabPanel value="5">
+          <Following loading={loading} friends={user} />
+        </TabPanel>
+      </TabContext>
+    </Box>
+    // </FollowersProfileLayout>
   );
 };
 

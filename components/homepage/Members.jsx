@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import baseUrl from "../config/Axios";
+import { useRouter } from "next/router";
 function Members() {
   const theme = useTheme();
   const matchDownMd = useMediaQuery(theme.breakpoints.down("md"));
@@ -18,6 +19,7 @@ function Members() {
   const { user } = useSelector((state) => state.auth);
   const friend = user?.data?.user;
 
+  const Router = useRouter();
   useEffect(() => {
     const getMembers = async () => {
       setLoding(true);
@@ -74,6 +76,7 @@ function Members() {
                     // padding: "3px",
                   }}
                   key={item?.id}
+                  onClick={() => Router.push(`/users/followers/${item?._id}`)}
                 >
                   <img src={item?.avater?.filename} />
                   <div className={Styles.memberInfo}>
