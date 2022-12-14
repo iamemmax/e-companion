@@ -26,6 +26,7 @@ import Loading from "../../components/config/Loader";
 import DashboardLayout from "../../components/layouts/DashboardLayout";
 import baseUrlUpload from "../../components/config/AxiosUpload";
 import { LoadingButton } from '@mui/lab';
+import AdvertLayout from "../../components/layouts/AdvertLayout";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -108,6 +109,8 @@ const Profile = () => {
         <title>Update Profile</title>
       </Head>
 
+      <AdvertLayout>
+        
       <div style={Style.imgBox}>
         <form method="post" onSubmit={uploadImg} encType="multipart/form-data">
           <IconButton
@@ -255,18 +258,21 @@ const Profile = () => {
             </Button>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Button
-              fullWidth
-              size="large"
-              variant="contained"
-              type="submit"
-              // onClick={submitusers}
-            >
-              {isLoading ? "upadating..." : "update"}
-            </Button>
+               <LoadingButton
+          size="medium"
+         
+          loading={isLoading}
+          loadingPosition="end"
+            variant="contained"
+            fullWidth
+            type="submit"
+        >
+          Update Profile
+        </LoadingButton>
           </Grid>
         </Grid>
       </form>
+      </AdvertLayout>
     </DashboardLayout>
   );
 };

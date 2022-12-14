@@ -27,6 +27,9 @@ import axios from "axios";
 import baseUrl from "../../../components/config/Axios";
 import { toast } from "react-toastify";
 import UpdateProstImage from "../../../components/post/UpdateProstImage";
+import AdvertLayout from "../../../components/layouts/AdvertLayout";
+import { LoadingButton } from '@mui/lab';
+
 
 const UpdatePosts = () => {
   const router = useRouter();
@@ -72,12 +75,11 @@ const UpdatePosts = () => {
     });
   }
 
-  if (isLoading) {
-    return <Loading />;
-  }
+ 
   return (
     <DashboardLayout>
-      <Typography variant="h5" align="center" component={"h2"} p={2}>
+      <AdvertLayout>
+        <Typography variant="h5" align="center" component={"h2"} p={2}>
         Update Post
       </Typography>
       <Grid
@@ -137,13 +139,22 @@ const UpdatePosts = () => {
             </FormControl>
             <Grid>
               <br />
-              <Button fullWidth variant="contained" type="submit">
-                Submit
-              </Button>
+                 <LoadingButton
+          size="medium"
+         
+          loading={isLoading}
+          loadingPosition="end"
+            variant="contained"
+            fullWidth
+            type="submit"
+        >
+          Update Post
+        </LoadingButton>
             </Grid>
           </Grid>
         </form>
       </Grid>
+      </AdvertLayout>
     </DashboardLayout>
   );
 };

@@ -141,7 +141,12 @@ function PostFooter({ post }) {
               vertical: "bottom",
               horizontal: "left",
             }}
-            style={{ marginRight: "3rem", width: "200px", marginTop: "-13rem" }}
+            style={{
+              marginRight: "3rem",
+              width: "200px",
+              marginTop: "-13rem",
+              zIndex: "99",
+            }}
           >
             <div>
               <FacebookShareButton

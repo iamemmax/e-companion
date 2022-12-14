@@ -36,7 +36,7 @@ import axios from "axios";
 import baseUrl from "../../../config/Axios";
 import { Waypoint } from "react-waypoint";
 
-const ActivityBody = () => {
+const ActivityPhoto = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -125,10 +125,6 @@ const ActivityBody = () => {
                 </IconButton>
               </Grid>
             </Stack>
-
-            <Grid itemxs={12} p={2}>
-              <Typography variant="subtitle2">{post?.description} </Typography>
-            </Grid>
 
             <div>
               {post?.img?.length === 1 && (
@@ -295,4 +291,4 @@ const ActivityBody = () => {
   );
 };
 
-export default ActivityBody;
+export default ActivityPhoto;

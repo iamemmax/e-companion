@@ -17,6 +17,11 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Loading from "../../components/config/Loader";
 import { useDispatch, useSelector } from "react-redux";
+import AdvertLayout from "../../components/layouts/AdvertLayout";
+import { LoadingButton } from '@mui/lab';
+
+
+
 const UpdatePassword = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { 
@@ -75,7 +80,8 @@ const UpdatePassword = () => {
 
   return (
     <DashboardLayout>
-      <Typography variant="h5" component="h2" align="center" p={3}>
+      <AdvertLayout>
+           <Typography variant="h5" component="h2" align="center" p={3}>
         Change Password
       </Typography>
 
@@ -170,17 +176,21 @@ const UpdatePassword = () => {
 
           <br />
           <Grid item xs={12} md={8}>
-            <Button
-              fullWidth
-              variant="contained"
-              type="submit"
-              disabled={!(formik.isValid && formik.dirty)}
-            >
-              {isLoading ? "please Wait" : "Update"}
-            </Button>
+               <LoadingButton
+          size="medium"
+         
+          loading={isLoading}
+          loadingPosition="end"
+            variant="contained"
+            fullWidth
+            type="submit"
+        >
+          Update Password
+        </LoadingButton>
           </Grid>
         </Grid>
       </form>
+   </AdvertLayout>
     </DashboardLayout>
   );
 };

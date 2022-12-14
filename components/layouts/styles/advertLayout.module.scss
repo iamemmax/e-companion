@@ -1,0 +1,47 @@
+@import "../../../public/styles//mixing/media.scss";
+@import "../../../public/styles//variable/color.scss";
+.advert__wrapper{
+
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    height: 100vh;
+    grid-gap:20px;
+
+
+
+    .Advert{
+        border: 2px solid #eee;
+        overflow: auto;
+        height:100vh;
+        display: flex;
+        flex-direction: column;
+        // padding: 5px;
+        @include phone{
+            display: none;
+        }
+
+        & > div{
+            width: 100%;
+            height: auto;
+            border: 2px solid #eee;
+            margin: 5px 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+         
+
+            img{
+                width: 100%;
+            }
+        }
+    }
+
+    .children{
+        height: 100vh;
+        overflow: auto;
+        border: 2px solid #eee;
+        @include phone {
+                grid-column: 1/-1;
+            }
+    }
+}

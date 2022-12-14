@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import baseUrl from "../../components/config/Axios";
 import Loading from "../../components/config/Loader";
 import Header from "../../components/custom/Header";
+import AdvertLayout from "../../components/layouts/AdvertLayout";
 import DashboardLayout from "../../components/layouts/DashboardLayout";
 // import DashboadHeader from "../../components/users/Dashboard/DashboadHeader";
 // import Styles from "../../components/users/dashboard/styles/dashboadHeader.module.scss";
@@ -73,7 +74,8 @@ console.log(user?.data?.user?.followers.map(x => x?._id))
   return (
     <>
       <DashboardLayout>
-        <Typography variant="h5" p={3} align="center">
+        <AdvertLayout>
+           <Typography variant="h5" p={3} align="center">
           {" "}
           Add new Friend
         </Typography>
@@ -120,6 +122,7 @@ console.log(user?.data?.user?.followers.map(x => x?._id))
             </Grid>
           ))}
         </Grid>
+       </AdvertLayout>
       </DashboardLayout>
     </>
   );
