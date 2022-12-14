@@ -1,13 +1,13 @@
 import React from "react";
 import { Button, Grid, Avatar, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-
+import AdvertLayout from "../../../layouts/AdvertLayout";
 const Following = ({ loading, friends }) => {
   const { user } = useSelector((state) => state.auth);
   const currentUser = user?.data?.user;
   console.log(currentUser._id);
   return (
-    <div>
+    <AdvertLayout>
       {loading
         ? "loading"
         : friends?.following?.map((x) => (
@@ -31,7 +31,7 @@ const Following = ({ loading, friends }) => {
               <br />
             </Grid>
           ))}
-    </div>
+    </AdvertLayout>
   );
 };
 

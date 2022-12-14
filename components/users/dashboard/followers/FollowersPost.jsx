@@ -14,10 +14,11 @@ import { format } from "timeago.js";
 import Styles from "../../../post/styles/postMessages.module.scss";
 import Link from "next/link";
 import { FaShare } from "react-icons/fa";
+import AdvertLayout from "../../../layouts/AdvertLayout";
 
 const FollowersPost = ({ followerPost, loading }) => {
   return (
-    <div>
+    <AdvertLayout>
       {loading ? (
         "loading"
       ) : followerPost?.length <= 0 ? (
@@ -136,7 +137,7 @@ const FollowersPost = ({ followerPost, loading }) => {
           </Link>
         ))
       )}
-    </div>
+    </AdvertLayout>
   );
 };
 

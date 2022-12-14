@@ -11,10 +11,11 @@ import {
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import Avatar from "@mui/material/Avatar";
+import AdvertLayout from "../../../layouts/AdvertLayout";
 
 const Profile = ({ user, loading }) => {
   return (
-    <div>
+    <AdvertLayout>
       <Grid container justifyContent="center" align="center">
         <Grid item xs={5}>
           <Avatar
@@ -86,6 +87,7 @@ const Profile = ({ user, loading }) => {
             name="date_of_birth"
           />
         </Grid>
+
         <Grid item xs={12} md={6}>
           <TextField
             label="Country"
@@ -106,7 +108,6 @@ const Profile = ({ user, loading }) => {
             name="state"
           />
         </Grid>
-
         <Grid item xs={12} md={6}>
           <TextField
             label="City"
@@ -138,7 +139,7 @@ const Profile = ({ user, loading }) => {
           </div>
         </Grid>
       </Grid>
-    </div>
+    </AdvertLayout>
   );
 };
 

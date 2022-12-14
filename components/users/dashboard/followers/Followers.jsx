@@ -8,6 +8,7 @@ import {
 import baseUrl from "../../../config/Axios";
 import { useRouter } from "next/router";
 import { Button, Grid, Avatar, Typography } from "@mui/material";
+import AdvertLayout from "../../../layouts/AdvertLayout";
 const Followers = ({ loading, friends }) => {
   // const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -48,27 +49,28 @@ const Followers = ({ loading, friends }) => {
   const currentUser = user?.data?.user;
 
   return (
-    <div>
-      {loading
-        ? "loading"
-        : friends?.followers?.map((x) => (
-            <Grid container spacing={2} pb={4} key={x?._id}>
-              <Grid item xs={3}>
-                {" "}
-                <Avatar
-                  alt="Remy Sharp"
-                  src={x?.avater?.filename}
-                  sx={{ width: 40, height: 40 }}
-                />
-              </Grid>
-              <Grid item xs={5}>
-                <Typography variant="body2">
+    <AdvertLayout>
+      <div>
+        {loading
+          ? "loading"
+          : friends?.followers?.map((x) => (
+              <Grid container spacing={2} pb={4} key={x?._id}>
+                <Grid item xs={3}>
                   {" "}
-                  {currentUser?._id === x?._id ? "You" : x?.username}
-                </Typography>
-              </Grid>
+                  <Avatar
+                    alt="Remy Sharp"
+                    src={x?.avater?.filename}
+                    sx={{ width: 40, height: 40 }}
+                  />
+                </Grid>
+                <Grid item xs={5}>
+                  <Typography variant="body2">
+                    {" "}
+                    {currentUser?._id === x?._id ? "You" : x?.username}
+                  </Typography>
+                </Grid>
 
-              {/* <Grid item xs={3}>
+                {/* <Grid item xs={3}>
                 {currentUser?.followers.find((b) => b?._id === x?._id) ? (
                   <Button
                     variant="outlined"
@@ -85,10 +87,11 @@ const Followers = ({ loading, friends }) => {
                   </Button>
                 )}
               </Grid> */}
-              <br />
-            </Grid>
-          ))}
-    </div>
+                <br />
+              </Grid>
+            ))}
+      </div>
+    </AdvertLayout>
   );
 };
 
