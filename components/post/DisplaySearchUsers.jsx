@@ -14,7 +14,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { format } from "timeago.js";
 
-const DisplaySearchUsers = ({ people, loading }) => {
+const DisplaySearchUsers = ({ people, loading, datas }) => {
   const { search } = useSelector((state) => state.posts);
   const Router = useRouter();
   if (loading) {
@@ -23,7 +23,7 @@ const DisplaySearchUsers = ({ people, loading }) => {
   return (
     <div>
       {people?.length <= 0 ? (
-        <p>{`${people?.length} result found for ${search}`}</p>
+        <p>{`${people?.length} result found for ${search || datas}`}</p>
       ) : (
         people?.map((x) => (
           <>

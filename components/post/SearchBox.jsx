@@ -79,7 +79,7 @@ export default function SearchBox({ openSearch, setOpenSearch }) {
       console.log(error.message);
     }
   };
-
+  let datas;
   return (
     <div>
       <Dialog
@@ -120,7 +120,11 @@ export default function SearchBox({ openSearch, setOpenSearch }) {
               <DisplaySearchPost latestPost={latestPost} loading={loading} />
             </TabPanel>
             <TabPanel value="2">
-              <DisplaySearchUsers people={people} loading={loading} />
+              <DisplaySearchUsers
+                people={people}
+                loading={loading}
+                datas={datas}
+              />
             </TabPanel>
             <TabPanel value="3">
               <DisplayRecentPost latestPost={latestPost} loading={loading} />

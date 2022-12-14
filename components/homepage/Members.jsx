@@ -25,7 +25,7 @@ function Members() {
       setLoding(true);
       try {
         const { data } = await axios.get(
-          `${baseUrl}/users/?country=${friend?.country}&state=${friend?.state}&city=${friend?.city}`
+          `${baseUrl}/users/${friend?.country}/${friend?.state}/${friend?.city}`
         );
         console.log(data);
         if (data) {
@@ -90,7 +90,7 @@ function Members() {
         <div className={Styles.seemore}>
           {/* <Button
             fullWidth
-            size="large"
+            size="large"6
             style={{ backgroundColor: "#FC2A4D" }}
             variant="contained"
           >

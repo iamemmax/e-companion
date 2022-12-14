@@ -64,9 +64,10 @@ function Success() {
   const handleClick = async (datas) => {
     setOpen(true);
     setCountry(datas);
+    console.log(datas);
     try {
       setLoading(true);
-      const { data } = await axios.get(`${baseUrl}/users?country=${"china"}`);
+      const { data } = await axios.get(`${baseUrl}/users/${datas}`);
       console.log(data);
       setLoading(false);
       if (data) {
@@ -83,6 +84,7 @@ function Success() {
     setOpen(false);
     setCountry("");
   };
+  console.log(country);
 
   return (
     <div className={Styles.wrapper}>
@@ -126,7 +128,7 @@ function Success() {
             </IconButton>
           </Toolbar>
         </AppBar>
-        <DisplaySearchUsers people={people} loading={loading} />
+        <DisplaySearchUsers people={people} loading={loading} datas={country} />
       </Dialog>
       <div className={Styles.seemore}>
         <Button
