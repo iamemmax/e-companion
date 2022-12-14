@@ -50,7 +50,7 @@ function PostFooter({ post }) {
   };
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  const currentuser = user.data?.user?._id;
+  const currentuser = user?.data?.user?._id;
   const [arrivalMessage, setArrivalMessage] = useState([]);
 
   useEffect(() => {

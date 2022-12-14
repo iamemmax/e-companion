@@ -22,6 +22,7 @@ import DisplaySearchUsers from "./DisplaySearchUsers";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import baseUrl from "../config/Axios";
+import DisplayRecentPost from "./DisplayRecentPost";
 // import { searchUsers } from "../../features/slice/users/UserSlice";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -36,6 +37,7 @@ export default function SearchBox({ openSearch, setOpenSearch }) {
   const [loading, setLoading] = useState(false);
   const [value, setValue] = React.useState("1");
   const dispatch = useDispatch();
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -120,7 +122,9 @@ export default function SearchBox({ openSearch, setOpenSearch }) {
             <TabPanel value="2">
               <DisplaySearchUsers people={people} loading={loading} />
             </TabPanel>
-            <TabPanel value="3">Item Three</TabPanel>
+            <TabPanel value="3">
+              <DisplayRecentPost latestPost={latestPost} loading={loading} />
+            </TabPanel>
           </TabContext>
         </Box>
       </Dialog>

@@ -9,13 +9,14 @@ import {
   CardHeader,
 } from "@mui/material";
 import { Stack } from "@mui/system";
+import { useRouter } from "next/router";
 import React from "react";
 import { useSelector } from "react-redux";
 import { format } from "timeago.js";
 
 const DisplaySearchUsers = ({ people, loading }) => {
   const { search } = useSelector((state) => state.posts);
-
+  const Router = useRouter();
   if (loading) {
     return <p>loading .....</p>;
   }
@@ -43,8 +44,13 @@ const DisplaySearchUsers = ({ people, loading }) => {
                 }
               />
               <CardActions>
-                <Button size="small">Follow</Button>
-                <Button size="small">Unfollow</Button>
+                {/* <Button size="sm all">Follow</Button> */}
+                <Button
+                  size="small"
+                  onClick={() => Router.push(`/users/followers/${x?._id}`)}
+                >
+                  View Profile
+                </Button>
               </CardActions>
             </Card>
           </>

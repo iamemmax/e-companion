@@ -14,7 +14,7 @@ import Styles from "./styles/latestpost.search.module.scss";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import { Router, useRouter } from "next/router";
 
-const DisplaySearchPost = ({ latestPost, loading }) => {
+const DisplayRecentPost = ({ latestPost, loading }) => {
   const [expanded, setExpanded] = React.useState(false);
   const Router = useRouter();
   const { search } = useSelector((state) => state.posts);
@@ -27,7 +27,7 @@ const DisplaySearchPost = ({ latestPost, loading }) => {
         <p>{`${latestPost?.length} result found for ${search}`}</p>
       ) : (
         latestPost &&
-        latestPost?.map((post) => (
+        latestPost?.reverse()?.map((post) => (
           <div
             className={Styles.lastestPost}
             key={post?._id}
@@ -99,4 +99,4 @@ const DisplaySearchPost = ({ latestPost, loading }) => {
   );
 };
 
-export default DisplaySearchPost;
+export default DisplayRecentPost;
