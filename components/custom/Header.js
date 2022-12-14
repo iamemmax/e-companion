@@ -80,13 +80,13 @@ function Header() {
              Find love
             </Link>
               </li>
-                <li  onClick={() => setActive(3)}
+                {/* <li  onClick={() => setActive(3)}
                 className={active === 3 ? Styles.active : ""}>
                 
             <Link href="/" >
              {/* Help */}
-            </Link>
-              </li>
+            {/* </Link> */}
+              {/* </li>  */}
               
               <li onClick={() => setActive(4)}
                 className={active === 4 ? Styles.active : ""}>

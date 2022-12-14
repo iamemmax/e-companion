@@ -1,5 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Grid, IconButton, Badge, Divider, Typography } from "@mui/material";
+import {
+  Grid,
+  IconButton,
+  Badge,
+  Divider,
+  Popover,
+  Box,
+  Typography,
+} from "@mui/material";
 import ThumbDownOffAltOutlinedIcon from "@mui/icons-material/ThumbDownOffAltOutlined";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import { styled } from "@mui/material/styles";
@@ -15,7 +23,16 @@ import axios from "axios";
 import baseUrl from "../config/Axios";
 import { likePosts } from "../../features/slice/post/postSlice";
 import { io } from "socket.io-client";
-
+import {
+  FacebookShareButton,
+  EmailShareButton,
+  EmailIcon,
+  TwitterShareButton,
+  WhatsappShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  WhatsappIcon,
+} from "react-share";
 function PostFooter({ post }) {
   const StyledBadge = styled(Badge)(({ theme }) => ({
     "& .MuiBadge-badge": {
@@ -34,7 +51,7 @@ function PostFooter({ post }) {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const currentuser = user.data?.user?._id;
-  const [arrivalMessage, setArrivalMessage] = useState(null);
+  const [arrivalMessage, setArrivalMessage] = useState([]);
 
   useEffect(() => {
     socket.current = io("https://e-companion.onrender.com");
@@ -62,8 +79,22 @@ function PostFooter({ post }) {
     }
   };
   useEffect(() => {
+    // let info = arrivalMessage?.slice(0, 1);
     // dispatch(likePosts(info));
   }, [arrivalMessage]);
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const openShareIcon = Boolean(anchorEl);
+  const id = openShareIcon ? "simple-popover" : undefined; // show share sicon
 
   return (
     <div>
@@ -74,13 +105,7 @@ function PostFooter({ post }) {
               badgeContent={post?.likes.length > 0 ? post?.likes.length : "0"}
               color="primary"
             >
-              {post?.likes?.map((x) =>
-                x?.likeBy === user?.data?.user?._id ? (
-                  <ThumbUpOutlinedIcon color="primary" />
-                ) : (
-                  <ThumbUpOutlinedIcon color="secondary" />
-                )
-              )}
+              <ThumbUpOutlinedIcon />
             </StyledBadge>
             {/* likes */}
           </IconButton>
@@ -104,9 +129,64 @@ function PostFooter({ post }) {
           </IconButton>
         </div>
         <div>
-          <IconButton>
+          <IconButton onClick={handleClick}>
             <FaShare />
           </IconButton>
+          <Popover
+            id={id}
+            open={openShareIcon}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            style={{ marginRight: "3rem", width: "200px", marginTop: "-13rem" }}
+          >
+            <div>
+              <FacebookShareButton
+                url={`https://e-companion.vercel.app/post/${post?._id}`}
+                quote={post?.description}
+                hashtag="#e-cpmanion"
+                sx={{ padding: "5px", borderRadius: "50px" }}
+              >
+                <FacebookIcon
+                  size={36}
+                  style={{ padding: "5px", borderRadius: "50px" }}
+                />
+              </FacebookShareButton>
+              <TwitterShareButton
+                url={`https://e-companion.vercel.app/post/${post?._id}`}
+                title={post?.description}
+                hashtag="#e-cpmanion"
+              >
+                <TwitterIcon
+                  size={36}
+                  style={{ padding: "5px", borderRadius: "50px" }}
+                />
+              </TwitterShareButton>
+              <WhatsappShareButton
+                url={`https://e-companion.vercel.app/post/${post?._id}`}
+                title={post?.description}
+                separator=":: "
+              >
+                <WhatsappIcon
+                  size={36}
+                  style={{ padding: "5px", borderRadius: "50px" }}
+                />
+              </WhatsappShareButton>
+              <EmailShareButton
+                url={`https://e-companion.vercel.app/post/${post?._id}`}
+                title={post?.description}
+                separator=":: "
+              >
+                <EmailIcon
+                  size={36}
+                  style={{ padding: "5px", borderRadius: "50px" }}
+                />
+              </EmailShareButton>
+            </div>
+          </Popover>
         </div>
       </div>
 

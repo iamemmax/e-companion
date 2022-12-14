@@ -2,51 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import baseUrl from "../../../components/config/Axios";
 
-
-//   "post/new",
-//   async (data, thunkAPI) => {
-//     const { description, visibility, video, img , myId} = data;
-//     try {
-      
-//         let newData = new FormData();
-//         newData.append("visibility", visibility);
-//         newData.append("description", description);
-//         newData.append("author", myId);
-//         newData.append("userId", myId);
-//         for (let i = 0; i < img.length; i++) {
-//           newData.append("img", img[i]);
-//         }
-        
-//         let videoData = new FormData();
-//         videoData.append("visibility", visibility);
-//         videoData.append("description", description);
-//         videoData.append("author", myId);
-//         videoData.append("userId", myId);
-      
-   
-//           videoData.append("video", video);
-        
-//       if (img) {
-        
-//         const { data } = await axios.post(`${baseUrl}/posts/new`, newData);
-//         return data;
-//       } 
-//       if(video){
-//         const { data } = await axios.post(`${baseUrl}/posts/video/new`, videoData);
-//         console.log(data)
-//         return data;
-//       }
-//       console.log(video)
-
-//     } catch (error) {
-//       let message =
-//         (error.response && error.response.data && error.response.data.msg) ||
-//         error.message ||
-//         error.toString();
-//       return thunkAPI.rejectWithValue(message);
-//     }
-//   }
-// );
 export const CreateMyActivityPost = createAsyncThunk(
   "post/new-post",
   async (data, thunkAPI) => {
