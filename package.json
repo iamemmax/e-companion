@@ -53,7 +53,7 @@
     "react-waypoint": "^10.3.0",
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
-    "sass": "^1.55.0",
+    "sass": "^1.60.0",
     "simple-peer": "^9.11.1",
     "slick-carousel": "^1.8.1",
     "socket.io-client": "^4.5.3",
